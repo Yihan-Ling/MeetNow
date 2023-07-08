@@ -14,20 +14,20 @@
 
 1. Clone the repository to your local machine: 
 
-```git clone git@github.com:Yihan-Ling/MeetNow.git```
+    ```git clone git@github.com:Yihan-Ling/MeetNow.git```
 
 2. Navigate to the project directory: 
 
-```cd meetnow```
+    ```cd meetnow```
 
 3. Install the dependencies: 
 
-```npm install```
+    ```npm install```
 
 ## Usage
 
 1. Start the development server:
-```npm start```
+    ```npm start```
 
 This command will start the React development server and launch the MeetNow webpage in your default browser.
 
@@ -39,7 +39,6 @@ This command will start the React development server and launch the MeetNow webp
 ## Technologies Used
 
 - React: A JavaScript library for building user interfaces.
-- Firebase: A backend-as-a-service platform for authentication and real-time data storage.
 - Other libraries and dependencies (listed in package.json).
 
 ## Contributing

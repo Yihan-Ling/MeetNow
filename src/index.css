@@ -1,0 +1,29 @@
+
+.title {
+    font-size: 24px;
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+    margin-top: 5%;
+    text-align: center;
+}
+
+.smallButtonStyle {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: #3F88C5;
+    text-transform: none;
+    /* text-decoration: underline; */
+    position: relative;
+    right: 20%;
+    float: right;
+}
+
+.textTitle {
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    margin-top: 5%;
+    position: relative;
+    left: 15%;
+}
