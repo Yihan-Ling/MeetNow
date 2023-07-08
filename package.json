@@ -1,0 +1,23 @@
+{
+  "name": "meetnow",
+  "version": "0.0.1",
+  "description": "This is the version 0 of MeetNow",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yihan-Ling/MeetNow.git"
+  },
+  "author": "Yihan Ling",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Yihan-Ling/MeetNow/issues"
+  },
+  "homepage": "https://github.com/Yihan-Ling/MeetNow#readme",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
