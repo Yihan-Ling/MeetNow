@@ -4,6 +4,8 @@ import React from 'react';
 import Button from '@mui/material/Button';
 import { NavLink } from 'react-router-dom';
 import styles from './StudentHomePage.module.css'
+import meetingRooms from './data';
+import { Box } from '@mui/material';
 
 export default function StudentHomePage(){
 
@@ -17,7 +19,20 @@ export default function StudentHomePage(){
             </NavLink>
             
             <p className={styles.textTitle}>SAC</p>
-            
+            {meetingRooms.map(room => 
+                <NavLink key={room.id} to={`${room.id}`} className={({isSmall}) => room.size == 'Small' ? styles.smallRoom : styles.bigRoom}>
+                    <Box
+                        sx={{
+                            backgroundColor: '#D9D9D9',
+                            borderRadius: '8%',
+                            height: '20%',
+                        }}
+                    >
+                      
+                    </Box>
+                </NavLink>
+            )}
+
             <p className={styles.textTitle}>Lanphier</p>
             
 

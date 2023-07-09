@@ -27,3 +27,13 @@
     position: relative;
     left: 15%;
 }
+
+.smallRoom {
+    width: 10%;
+    height: 5%;
+}
+
+.bigRoom {
+    width: 5%;
+    height: 5%;
+}

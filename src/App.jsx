@@ -11,10 +11,11 @@ export default function App(){
     return(
         <Routes>
             <Route path="/" element={<StudentHomePage />}>
-                <Route path="seeall" element={<AllMeetingRoomsPage />} />
+                
 
-                <Route path="*" element={<h2>404 Page Not Found</h2>} />
+                {/* <Route path="*" element={<h2>404 Page Not Found</h2>} /> */}
             </Route>
+            <Route path="/seeall" element={<AllMeetingRoomsPage />} />
             
         </Routes>
     );
