@@ -2,26 +2,23 @@
 // import { useState } from 'react';
 import React from 'react';
 import Button from '@mui/material/Button';
+import { NavLink } from 'react-router-dom';
+import styles from './StudentHomePage.module.css'
 
 export default function StudentHomePage(){
-    const buttonStyle = {
-        fontFamily: 'Inter, sans-serif',
-        fontSize: 12,
-        fontWeight: 500,
-        color: '#3F88C5',
-        textTransform: 'none',
-        // textDecoration: 'underline',
-      };
 
     return(
         <div className='container'>
-            <p className='title'> Available Rooms</p>
-            <Button variant="text" className='smallButtonStyle'>
-                See All
-            </Button>
-            <p className='textTitle'>SAC</p>
+            <p className={styles.title}> Available Rooms</p>
+            <NavLink to='/seeall'>
+                <Button variant="text" className={styles.smallButtonStyle}>
+                    See All
+                </Button>
+            </NavLink>
             
-            <p className='textTitle'>Lanphier</p>
+            <p className={styles.textTitle}>SAC</p>
+            
+            <p className={styles.textTitle}>Lanphier</p>
             
 
         </div>
