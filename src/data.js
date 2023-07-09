@@ -3,51 +3,51 @@ const meetingRooms = [
         id: 'S107',
         size: 'Small',
         capacity: 4,
-        Location: 'SAC',
+        location: 'SAC',
     },
     {
         id: 'S108',
         size: 'Small',
         capacity: 4,
-        Location: 'SAC',
+        location: 'SAC',
     },
     {
         id: 'S109',
         size: 'Big',
         capacity: 10,
-        Location: 'SAC',
+        location: 'SAC',
     },
     {
         id: 'S110',
         size: 'Small',
         capacity: 4,
-        Location: 'SAC',
+        location: 'SAC',
     },
 
 
     {
-        id: 'L107',
+        id: 'L121',
         size: 'Small',
         capacity: 4,
-        Location: 'Lanphier',
+        location: 'Lanphier',
     },
     {
-        id: 'L108',
+        id: 'L122',
         size: 'Big',
         capacity: 6,
-        Location: 'Lanphier',
+        location: 'Lanphier',
     },
     {
-        id: 'L109',
+        id: 'L123',
         size: 'Small',
         capacity: 4,
-        Location: 'Lanphier',
+        location: 'Lanphier',
     },
     {
-        id: 'L110',
+        id: 'L124',
         size: 'Small',
         capacity: 4,
-        Location: 'Lanphier',
+        location: 'Lanphier',
     },
 
 

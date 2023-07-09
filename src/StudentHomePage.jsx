@@ -5,9 +5,13 @@ import Button from '@mui/material/Button';
 import { NavLink } from 'react-router-dom';
 import styles from './StudentHomePage.module.css'
 import meetingRooms from './data';
-import { Box } from '@mui/material';
+import { Box, Grid } from '@mui/material';
+
 
 export default function StudentHomePage(){
+
+    const sacMeetingRooms = meetingRooms.filter((room) => room.location === 'SAC');
+    const lanphierMeetingRooms = meetingRooms.filter((room) => room.location === 'Lanphier');
 
     return(
         <div className='container'>
@@ -19,23 +23,36 @@ export default function StudentHomePage(){
             </NavLink>
             
             <p className={styles.textTitle}>SAC</p>
-            {meetingRooms.map(room => 
-                <NavLink key={room.id} to={`${room.id}`} className={({isSmall}) => room.size == 'Small' ? styles.smallRoom : styles.bigRoom}>
-                    <Box
-                        sx={{
-                            backgroundColor: '#D9D9D9',
-                            borderRadius: '8%',
-                            minWidth: '20%',
-                            minHeight: '30%',
-                        }}
-                    >
-                      {room.id}
-                    </Box>
-                </NavLink>
-            )}
+
+            <Grid container spacing={2} sx={{ width: '75vw', margin: '0 auto' }}>
+                {sacMeetingRooms.map((room, index) => (
+                    <Grid item key={index} xs={3} sm={6} md={4} lg={4} sx={{ display: 'flex', justifyContent: 'center' }}>
+                        <NavLink key={room.id} to={`${room.id}`}>
+                            <Box className={styles.meetingRoom}>
+                                <p className={styles.meetingRoomNumber}>{room.id}</p>
+                            </Box>
+                        </NavLink>
+                        
+                        
+                    </Grid>
+                ))}
+            </Grid>
+
 
             <p className={styles.textTitle}>Lanphier</p>
-            
+            <Grid container spacing={2} sx={{ width: '75vw', margin: '0 auto' }}>
+                {lanphierMeetingRooms.map((room, index) => (
+                    <Grid item key={index} xs={3} sm={6} md={4} lg={4} sx={{ display: 'flex', justifyContent: 'center' }}>
+                        <NavLink key={room.id} to={`${room.id}`}>
+                            <Box className={styles.meetingRoom}>
+                                <p className={styles.meetingRoomNumber}>{room.id}</p>
+                            </Box>
+                        </NavLink>
+                        
+                        
+                    </Grid>
+                ))}
+            </Grid>
 
         </div>
     );
