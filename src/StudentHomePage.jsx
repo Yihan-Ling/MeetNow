@@ -25,10 +25,11 @@ export default function StudentHomePage(){
                         sx={{
                             backgroundColor: '#D9D9D9',
                             borderRadius: '8%',
-                            height: '20%',
+                            minWidth: '20%',
+                            minHeight: '30%',
                         }}
                     >
-                      
+                      {room.id}
                     </Box>
                 </NavLink>
             )}
