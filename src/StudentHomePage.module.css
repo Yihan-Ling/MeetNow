@@ -55,3 +55,18 @@
     justify-content: center;
     align-items: center;
 }
+
+.clubSectionTitle {
+    font-size: 20px;
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+    margin-top: 75px;
+    position: relative;
+    left: 15%;
+}
+
+.clubName {
+    font-size: 12px;
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+}

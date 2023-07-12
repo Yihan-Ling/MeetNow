@@ -53,4 +53,38 @@ const meetingRooms = [
 
 ];
 
-export default meetingRooms;
+
+const clubMeetings = [
+    {
+        id: 'MA1073',
+        club: 'Math Club',
+        startTime: '7:00',
+        endTime: '8:00',
+        date: '3/12',
+        location: 'Lanphier 206',
+    },
+
+    {
+        id: 'CH2891',
+        club: 'Chess Club',
+        startTime: '6:00',
+        endTime: '7:00',
+        date: '3/12',
+        location: 'SAC Common',
+    },
+
+    {
+        id: 'DE1029',
+        club: 'Debate Club',
+        startTime: '6:30',
+        endTime: '8:00',
+        date: '3/12',
+        location: 'Lanphier 124',
+    },
+];
+
+export default {
+    meetingRooms,
+    clubMeetings,
+};
+
