@@ -1,12 +1,15 @@
-// import styles from './AllMeetingRoomsPage.module.css'
-
+import styles from './MeetingRoomView.module.css'
+import { Box, Typography } from '@mui/material';
 
 export default function MeetingRoomView({meetingRoom}){
 
     return(
-        <div className='container'>
-            {/* <p className={styles.title}> All Meeting Rooms</p> */}
-            <p> {meetingRoom.id} </p>
+        <div className={styles.container}>
+            
+            <Box className={styles.idBox}>
+                <p className={styles.idTitle}> {meetingRoom.id} </p>
+            </Box>
+            
         </div>
     );
 }

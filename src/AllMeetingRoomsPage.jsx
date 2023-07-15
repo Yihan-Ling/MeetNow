@@ -14,9 +14,9 @@ export default function AllMeetingRoomsPage(){
     const sacMeetingRooms = data.meetingRooms.filter((room) => room.location === 'SAC');
     const lanphierMeetingRooms = data.meetingRooms.filter((room) => room.location === 'Lanphier');
     const [drawerState, setDrawerState] = useState(false);
-    const [searchRoomSize, setSearchRoomSize] = useState(4);
+    const [searchRoomSize, setSearchRoomSize] = useState(10);
     const [searchRoomAvi, setSearchRoomAvi] = useState(false);
-    const [searchRoomLocation, setSearchRoomLocation] = useState('any');
+    const [searchRoomLocation, setSearchRoomLocation] = useState('All');
 
     const handleRoomSizeChange = (event, newValue) => {
         setSearchRoomSize(newValue);
@@ -102,7 +102,7 @@ export default function AllMeetingRoomsPage(){
                             </Grid>
                             <Grid item>
                                 <Select value={searchRoomLocation} onChange={handleRoomLocationChange}>
-                                    <MenuItem value={'any'}>Any</MenuItem>
+                                    <MenuItem value={'All'}>Any</MenuItem>
                                     <MenuItem value={'SAC'}>SAC</MenuItem>
                                     <MenuItem value={'Lanphier'}>Lanphier</MenuItem>
                                 </Select>
