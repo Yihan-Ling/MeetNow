@@ -5,3 +5,64 @@
     margin-top: 5%;
     text-align: center;
 }
+
+.textTitle {
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    margin-top: 5%;
+    position: relative;
+    left: 15%;
+}
+
+.meetingRoom {
+    background-color: #D9D9D9;
+    border-radius: 12%;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.drawerOpenButton {
+    position: relative;
+    left: 125px;
+}
+
+.drawerCloseButton {
+    /* float: right; */
+    width: 50px;
+    position: relative;
+    left: 420px;
+    top: 30px;
+}
+
+.drawerBox {
+    /* background-color: #D9D9D9; */
+    width: 460px;
+    margin-top: 50px;
+    padding-left: 40px;
+}
+
+.roomSizeBox {
+    width: 325px;
+    margin-top: 50px;
+}
+
+.roomAviBox {
+    width: 400px;
+    margin-top: 50px;
+}
+.roomLocationBox {
+    width: 400px;
+    margin-top: 50px;
+}
+
+.confirmButton {
+    background-color:black;
+
+    top: 350px;
+    left: 30%;
+    
+}

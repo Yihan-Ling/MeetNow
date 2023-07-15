@@ -1,11 +1,10 @@
 // import { Routes, Route, Navigate, useNavigate, useParams } from 'react-router-dom';
 // import { useState } from 'react';
 import React from 'react';
-import Button from '@mui/material/Button';
 import { NavLink, Link } from 'react-router-dom';
 import styles from './StudentHomePage.module.css'
 import data from './data';
-import { Box, Card, CardActions, CardContent, Grid, Typography } from '@mui/material';
+import { Box, Card, CardActions, CardContent, Grid, Typography, Button } from '@mui/material';
 
 
 export default function StudentHomePage(){
