@@ -28,7 +28,7 @@ export default function App(){
 
     return(
         <Routes>
-            <Route path="/" element={<StudentHomePage />}>
+            <Route path="/" element={<StudentHomePage rooms={rooms} />}>
                 
 
                 {/* <Route path="*" element={<h2>404 Page Not Found</h2>} /> */}
@@ -44,7 +44,7 @@ export default function App(){
 
 function MeetingRoomViewFromPathParams({ rooms }) {
     const { id } = useParams();
-    const room = rooms.find(a => a.id == id);
+    const room = rooms.find(a => a._id == id);
   
     if (room) {
       return <MeetingRoomView meetingRoom={room} />;

@@ -7,7 +7,7 @@ export default function MeetingRoomView({meetingRoom}){
         <div className={styles.container}>
             
             <Box className={styles.idBox}>
-                <p className={styles.idTitle}> {meetingRoom.id} </p>
+                <p className={styles.idTitle}> {meetingRoom.name} </p>
             </Box>
             
         </div>

@@ -2,6 +2,7 @@ import express from 'express';
 import path from 'path';
 import * as url from 'url';
 import cors from 'cors';
+import mongoose from 'mongoose';
 
 // Setup Express
 const app = express();
@@ -50,4 +51,6 @@ app.use(express.static(path.join(url.fileURLToPath(new URL('.', import.meta.url)
 // Start the server running. Once the server is running, the given function will be called, which will
 // log a simple message to the server console. Any console.log() statements in your node.js code
 // can be seen in the terminal window used to run the server.
-app.listen(port, () => console.log(`App server listening on port ${port}!`));
+
+mongoose.connect("mongodb://127.0.0.1:27017/MeetNow", { useNewUrlParser: true })
+    .then(() => app.listen(port, () => console.log(`App server listening on port ${port}!`)));

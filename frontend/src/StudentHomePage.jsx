@@ -7,10 +7,10 @@ import data from './data';
 import { Box, Card, CardActions, CardContent, Grid, Typography, Button } from '@mui/material';
 
 
-export default function StudentHomePage(){
+export default function StudentHomePage({rooms}){
 
-    const sacMeetingRooms = data.meetingRooms.filter((room) => room.location === 'SAC');
-    const lanphierMeetingRooms = data.meetingRooms.filter((room) => room.location === 'Lanphier');
+    const sacMeetingRooms = rooms.filter((room) => room.location === 'SAC');
+    const lanphierMeetingRooms = rooms.filter((room) => room.location === 'Lanphier');
 
     return(
         <div className='container'>
@@ -27,7 +27,7 @@ export default function StudentHomePage(){
                 {sacMeetingRooms.map((room, index) => (
                     <Grid item key={index} xs={3} sm={6} md={4} lg={4} sx={{ display: 'flex', justifyContent: 'center' }}>
                         <Box className={styles.meetingRoom}>
-                            <Button size="large" component={Link} to={`/meeting-rooms/${room.id}`}>{room.id}</Button>
+                            <Button size="large" component={Link} to={`/meeting-rooms/${room._id}`}>{room.name}</Button>
                         </Box>                        
                     </Grid>
                 ))}
@@ -39,7 +39,7 @@ export default function StudentHomePage(){
                 {lanphierMeetingRooms.map((room, index) => (
                     <Grid item key={index} xs={3} sm={6} md={4} lg={4} sx={{ display: 'flex', justifyContent: 'center' }}>
                         <Box className={styles.meetingRoom}>
-                            <Button size="large" component={Link} to={`/meeting-rooms/${room.id}`}>{room.id}</Button>
+                            <Button size="large" component={Link} to={`/meeting-rooms/${room._id}`}>{room.name}</Button>
                         </Box>
                     </Grid>
                 ))}
@@ -49,7 +49,7 @@ export default function StudentHomePage(){
             
             <Grid container spacing={4} sx={{ width: '75vw', margin: '0 auto' }}>
                 {data.clubMeetings.map((meeting) => (
-                    <Grid item key={meeting.id} xs={12} sm={6} md={6} lg={6} xl={6}>
+                    <Grid item key={meeting.name} xs={12} sm={6} md={6} lg={6} xl={6}>
                     <Card>
                         <CardContent>
                         <Typography variant="h6">{meeting.club}</Typography>
@@ -61,7 +61,7 @@ export default function StudentHomePage(){
                         </Typography>
                         </CardContent>
                         <CardActions>
-                            <Button size="small" component={Link} to={`/club-meetings/${meeting.id}`}>Learn More</Button>
+                            <Button size="small" component={Link} to={`/club-meetings/${meeting.name}`}>Learn More</Button>
                         </CardActions>
                     </Card>
                     </Grid>
