@@ -14,4 +14,20 @@ const roomSchema = new Schema({
 
 const Room = mongoose.model('Room', roomSchema);
 
-export { Room };
+
+// Creat Club Meeting Schema
+const meetingSchema = new Schema({
+    name: { type: String, required: true },
+    club: String,
+    startTime: String,
+    endTime: String,
+    date: String,
+    location: String,
+}, {
+    timestamps: {}
+});
+
+const Meeting = mongoose.model('Meeting', meetingSchema);
+
+
+export { Room, Meeting };

@@ -3,8 +3,9 @@ dotenv.config();
 
 import mongoose from 'mongoose';
 import { createRoom } from './rooms-dao';
+import { createMeeting } from './meetings-dao';
 // import { dummyArticles } from './random-articles';
-import { Room } from './schema';
+import { Room, Meeting } from './schema';
 
 main();
 
@@ -19,6 +20,9 @@ async function main() {
     await addRooms();
     console.log();
 
+    await addMeetings();
+    console.log();
+
     // // Disconnect when complete
     await mongoose.disconnect();
     console.log('Disconnected from database!');
@@ -26,15 +30,22 @@ async function main() {
 
 async function clearDatabase() {
     const roomsDeleted = await Room.deleteMany({});
-    console.log(`Cleared database (removed ${roomsDeleted.deletedCount} rooms).`);
+    const meetingsDeleted = await Meeting.deleteMany({});
+    console.log(`Cleared database (removed ${roomsDeleted.deletedCount} rooms and ${meetingsDeleted.deletedCount} club meetings).`);
 }
 
 async function addRooms() {
     for (let room of meetingRooms) {
-
         const dbRoom = await createRoom(room);
         console.log(`Room '${dbRoom.name}' added to database (_id = ${dbRoom._id})`);
 
+    }
+}
+
+async function addMeetings() {
+    for (let meeting of clubMeetings) {
+        const dbMeeting = await createMeeting(meeting);
+        console.log(`Meeting '${dbMeeting.name}' added to database (_id = ${dbMeeting._id})`);
     }
 }
 
@@ -98,4 +109,33 @@ const meetingRooms = [
     },
 
 
+];
+
+const clubMeetings = [
+    {
+        name: 'MA1073',
+        club: 'Math Club',
+        startTime: '7:00',
+        endTime: '8:00',
+        date: '3/12',
+        location: 'Lanphier 206',
+    },
+
+    {
+        name: 'CH2891',
+        club: 'Chess Club',
+        startTime: '6:00',
+        endTime: '7:00',
+        date: '3/12',
+        location: 'SAC Common',
+    },
+
+    {
+        name: 'DE1029',
+        club: 'Debate Club',
+        startTime: '6:30',
+        endTime: '8:00',
+        date: '3/12',
+        location: 'Lanphier 124',
+    },
 ];
