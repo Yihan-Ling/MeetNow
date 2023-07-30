@@ -3,14 +3,15 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import styles from './StudentHomePage.module.css'
-import data from './data';
+// import data from './data';
 import { Box, Card, CardActions, CardContent, Grid, Typography, Button } from '@mui/material';
 
 
-export default function StudentHomePage({rooms}){
+export default function StudentHomePage({rooms, meetings}){
 
     const sacMeetingRooms = rooms.filter((room) => room.location === 'SAC');
     const lanphierMeetingRooms = rooms.filter((room) => room.location === 'Lanphier');
+    const clubMeetings = meetings;
 
     return(
         <div className='container'>
@@ -48,7 +49,7 @@ export default function StudentHomePage({rooms}){
             <p className={styles.clubSectionTitle}>Clubs Today:</p>
             
             <Grid container spacing={4} sx={{ width: '75vw', margin: '0 auto' }}>
-                {data.clubMeetings.map((meeting) => (
+                {clubMeetings.map((meeting) => (
                     <Grid item key={meeting.name} xs={12} sm={6} md={6} lg={6} xl={6}>
                     <Card>
                         <CardContent>
@@ -61,7 +62,7 @@ export default function StudentHomePage({rooms}){
                         </Typography>
                         </CardContent>
                         <CardActions>
-                            <Button size="small" component={Link} to={`/club-meetings/${meeting.name}`}>Learn More</Button>
+                            <Button size="small" component={Link} to={`/club-meetings/${meeting._id}`}>Learn More</Button>
                         </CardActions>
                     </Card>
                     </Grid>

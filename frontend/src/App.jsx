@@ -8,27 +8,38 @@ import MeetingRoomView from './MeetingRoomView';
 import RoomNotFound from './RoomNotFound';
 import MeetingView from './MeetingView';
 import MeetingNotFound from './MeetingNotFound';
-import data from './data';
+// import data from './data';
 import axios from 'axios';
 
 
 export default function App(){
 
     const [rooms, setRooms] = useState([]);
-    const [meetings, setMeetings] = useState(data.clubMeetings);
-    const url = 'http://localhost:3000/api/rooms';
+    const [meetings, setMeetings] = useState([]);
+    const room_url = 'http://localhost:3000/api/rooms';
+    const meeting_url = 'http://localhost:3000/api/meetings';
 
+    // get rooms data from database
     useEffect(() => {
-      async function fetchData() {
-        const response = await axios.get(url);
+      async function fetchRoomData() {
+        const response = await axios.get(room_url);
         setRooms(response.data);
       }
-      fetchData();
+      fetchRoomData();
+    }, []);
+
+    // get meetings data from database
+    useEffect(() => {
+      async function fetchMeetingData() {
+        const response = await axios.get(meeting_url);
+        setMeetings(response.data);
+      }
+      fetchMeetingData();
     }, []);
 
     return(
         <Routes>
-            <Route path="/" element={<StudentHomePage rooms={rooms} />}>
+            <Route path="/" element={<StudentHomePage rooms={rooms} meetings={meetings}/>}>
                 
 
                 {/* <Route path="*" element={<h2>404 Page Not Found</h2>} /> */}
@@ -56,7 +67,7 @@ function MeetingRoomViewFromPathParams({ rooms }) {
 
 function MeetingViewFromPathParams({ meetings }) {
     const { id } = useParams();
-    const meeting = meetings.find(a => a.id == id);
+    const meeting = meetings.find(a => a._id == id);
   
     if (meeting) {
       return <MeetingView clubMeeting={meeting} />;
