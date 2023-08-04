@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './AllMeetingRoomsPage.module.css'
-import data from './data';
 import { Button, Box, Grid, Drawer, IconButton, Slider, Typography, Switch, Select, MenuItem } from '@mui/material';
 import { Link} from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
@@ -9,15 +8,19 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { useState } from 'react';
 
 
-export default function AllMeetingRoomsPage(){
+export default function AllMeetingRoomsPage( {rooms} ){
 
-    const sacMeetingRooms = data.meetingRooms.filter((room) => room.location === 'SAC');
-    const lanphierMeetingRooms = data.meetingRooms.filter((room) => room.location === 'Lanphier');
+    // Setup | seperate meeting rooms data by locations
+    const sacMeetingRooms = rooms.filter((room) => room.location === 'SAC');
+    const lanphierMeetingRooms = rooms.filter((room) => room.location === 'Lanphier');
+
+    // Setup | Set initial states of filters
     const [drawerState, setDrawerState] = useState(false);
     const [searchRoomSize, setSearchRoomSize] = useState(10);
     const [searchRoomAvi, setSearchRoomAvi] = useState(false);
     const [searchRoomLocation, setSearchRoomLocation] = useState('All');
 
+    //handle state changes
     const handleRoomSizeChange = (event, newValue) => {
         setSearchRoomSize(newValue);
     };
@@ -30,8 +33,6 @@ export default function AllMeetingRoomsPage(){
         setSearchRoomLocation(event.target.value)
     }
 
-
-    
 
     return(
         <div className='container'>
@@ -53,8 +54,8 @@ export default function AllMeetingRoomsPage(){
                 </IconButton>
                 <Box className={styles.drawerBox}>
 
+                    {/* Room Size | Slider */}
                     <Box className={styles.roomSizeBox}>
-                        
                         <Grid container spacing={2} alignItems="center">
                             <Grid item xs>
                                 <Typography id="input-slider" gutterBottom>
@@ -78,6 +79,7 @@ export default function AllMeetingRoomsPage(){
                         </Grid>
                     </Box>
 
+                    {/* Avilibility | Toggle */}
                     <Box className={styles.roomAviBox}>
                         <Grid container spacing={9} alignItems="center" >
                             <Grid item>
@@ -93,6 +95,7 @@ export default function AllMeetingRoomsPage(){
                         </Grid>
                     </Box>
 
+                    {/* Room Location | Select */}
                     <Box className={styles.roomLocationBox}>
                         <Grid container spacing={18} alignItems="center" >
                             <Grid item>
@@ -110,31 +113,35 @@ export default function AllMeetingRoomsPage(){
                         </Grid>
                     </Box>
 
+                    {/* Confirm Button */}
                     <Button variant='contained' className={styles.confirmButton} onClick={() => setDrawerState(false)}>Confirm</Button>
                 </Box>
 
-                
             </Drawer>
             
-            <p className={styles.textTitle}>SAC</p>
 
+
+
+            {/* SAC Rooms Display */}
+            <p className={styles.textTitle}>SAC</p>
             <Grid container spacing={2} sx={{ width: '75vw', margin: '0 auto' }}>
                 {sacMeetingRooms.map((room, index) => (
                     <Grid item key={index} xs={3} sm={6} md={4} lg={4} sx={{ display: 'flex', justifyContent: 'center' }}>
                         <Box className={styles.meetingRoom}>
-                            <Button size="large" component={Link} to={`/meeting-rooms/${room.id}`}>{room.id}</Button>
+                            <Button size="large" component={Link} to={`/meeting-rooms/${room._id}`}>{room.name}</Button>
                         </Box>                        
                     </Grid>
                 ))}
             </Grid>
 
-
+            
+            {/* Lanphier Rooms Display */}
             <p className={styles.textTitle}>Lanphier</p>
             <Grid container spacing={2} sx={{ width: '75vw', margin: '0 auto' }}>
                 {lanphierMeetingRooms.map((room, index) => (
                     <Grid item key={index} xs={3} sm={6} md={4} lg={4} sx={{ display: 'flex', justifyContent: 'center' }}>
                         <Box className={styles.meetingRoom}>
-                            <Button size="large" component={Link} to={`/meeting-rooms/${room.id}`}>{room.id}</Button>
+                            <Button size="large" component={Link} to={`/meeting-rooms/${room._id}`}>{room.name}</Button>
                         </Box>
                     </Grid>
                 ))}

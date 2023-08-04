@@ -3,27 +3,33 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import styles from './StudentHomePage.module.css'
-// import data from './data';
 import { Box, Card, CardActions, CardContent, Grid, Typography, Button } from '@mui/material';
 
 
 export default function StudentHomePage({rooms, meetings}){
 
+    // Setup | seperate meeting rooms data by locations
     const sacMeetingRooms = rooms.filter((room) => room.location === 'SAC');
     const lanphierMeetingRooms = rooms.filter((room) => room.location === 'Lanphier');
     const clubMeetings = meetings;
 
     return(
         <div className='container'>
+
+            {/* Title */}
             <p className={styles.title}> Available Rooms</p>
+
+            {/* See All Button */}
             <NavLink to='/meeting-rooms/seeall'>
                 <Button variant="text" className={styles.smallButtonStyle}>
                     See All
                 </Button>
             </NavLink>
             
+            {/* Location Title | SAC */}
             <p className={styles.textTitle}>SAC</p>
 
+            {/* Meeting rooms display | SAC */}
             <Grid container spacing={2} sx={{ width: '75vw', margin: '0 auto' }}>
                 {sacMeetingRooms.map((room, index) => (
                     <Grid item key={index} xs={3} sm={6} md={4} lg={4} sx={{ display: 'flex', justifyContent: 'center' }}>
@@ -34,8 +40,10 @@ export default function StudentHomePage({rooms, meetings}){
                 ))}
             </Grid>
 
-
+            {/* Location Title | Lanphier */}
             <p className={styles.textTitle}>Lanphier</p>
+
+            {/* Meeting rooms display | Lanphier */}
             <Grid container spacing={2} sx={{ width: '75vw', margin: '0 auto' }}>
                 {lanphierMeetingRooms.map((room, index) => (
                     <Grid item key={index} xs={3} sm={6} md={4} lg={4} sx={{ display: 'flex', justifyContent: 'center' }}>
@@ -46,8 +54,12 @@ export default function StudentHomePage({rooms, meetings}){
                 ))}
             </Grid>
 
+
+            
+            {/* Club Section Title */}
             <p className={styles.clubSectionTitle}>Clubs Today:</p>
             
+            {/* Club meetings display */}
             <Grid container spacing={4} sx={{ width: '75vw', margin: '0 auto' }}>
                 {clubMeetings.map((meeting) => (
                     <Grid item key={meeting.name} xs={12} sm={6} md={6} lg={6} xl={6}>
@@ -73,3 +85,5 @@ export default function StudentHomePage({rooms, meetings}){
         </div>
     );
 }
+
+

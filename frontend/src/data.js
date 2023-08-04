@@ -1,3 +1,5 @@
+// dummy data, used for testing
+
 const meetingRooms = [
     {
         id: 'S107',

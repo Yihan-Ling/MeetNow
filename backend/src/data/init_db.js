@@ -4,22 +4,26 @@ dotenv.config();
 import mongoose from 'mongoose';
 import { createRoom } from './rooms-dao';
 import { createMeeting } from './meetings-dao';
-// import { dummyArticles } from './random-articles';
 import { Room, Meeting } from './schema';
 
 main();
 
 async function main() {
+
+    // Connect to Mongodb
     await mongoose.connect("mongodb://127.0.0.1:27017/MeetNow", { useNewUrlParser: true });
     console.log('Connected to database!');
     console.log();
 
+    // Clear Database
     await clearDatabase();
     console.log();
 
+    // Add initial data for rooms
     await addRooms();
     console.log();
 
+    // Add inital data for meetings
     await addMeetings();
     console.log();
 
@@ -49,13 +53,9 @@ async function addMeetings() {
     }
 }
 
-// async function createRoom(room) {
 
-//     const dbRoom = new Room(room);
-//     await dbRoom.save();
-//     return dbRoom;
-// }
 
+// Create Initial Data 
 const meetingRooms = [
     {
         name: 'S107',

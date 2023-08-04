@@ -9,7 +9,6 @@ const HTTP_NO_CONTENT = 204;
 const router = express.Router();
 
 
-// Create new article
 router.get('/', async(req, res) => {
     const roomsData = await retrieveRoomList();
     res.status(HTTP_OK)
