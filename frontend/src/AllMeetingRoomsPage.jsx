@@ -12,14 +12,14 @@ export default function AllMeetingRoomsPage( {rooms} ){
 
     // Setup | seperate meeting rooms data by locations
 
-    // const [sacMeetingRooms, setSacMeetingRooms] = useState([]);
-    // const [lanphierMeetingRooms, setLanphierMeetingRooms] = useState([]);
+    const [sacMeetingRooms, setSacMeetingRooms] = useState([]);
+    const [lanphierMeetingRooms, setLanphierMeetingRooms] = useState([]);
 
-    // setSacMeetingRooms(rooms.filter((room) => room.location === 'SAC'));
-    // setLanphierMeetingRooms(rooms.filter((room) => room.location === 'Lanphier'))
+    setSacMeetingRooms(rooms.filter((room) => room.location === 'SAC'));
+    setLanphierMeetingRooms(rooms.filter((room) => room.location === 'Lanphier'));
 
-    var sacMeetingRooms = rooms.filter((room) => room.location === 'SAC');
-    const lanphierMeetingRooms = rooms.filter((room) => room.location === 'Lanphier');
+    // var sacMeetingRooms = rooms.filter((room) => room.location === 'SAC');
+    // const lanphierMeetingRooms = rooms.filter((room) => room.location === 'Lanphier');
 
     // const [smr,setSmr] = useState([]);
     // setSmr([1,2,3])
@@ -126,7 +126,7 @@ export default function AllMeetingRoomsPage( {rooms} ){
                     </Box>
 
                     {/* Confirm Button */}
-                    <Button variant='contained' className={styles.confirmButton} onClick={handleConfirmClick()}>Confirm</Button>
+                    <Button variant='contained' className={styles.confirmButton} onClick={handleConfirmClick}>Confirm</Button>
                 </Box>
 
             </Drawer>
@@ -162,10 +162,10 @@ export default function AllMeetingRoomsPage( {rooms} ){
     );
 
     function handleConfirmClick(){
-        sacMeetingRooms = sacMeetingRooms.filter((room) => room.capacity <= searchRoomSize)
+        setSacMeetingRooms(sacMeetingRooms.filter((room) => room.capacity <= searchRoomSize));
         // sacMeetingRooms = sacMeetingRooms.filter((room) => room.avilibility === )
         if(searchRoomLocation != 'All'){
-            sacMeetingRooms = sacMeetingRooms.filter((room) => room.location === searchRoomLocation);
+            setSacMeetingRooms(sacMeetingRooms.filter((room) => room.location === searchRoomLocation));
         }
         setDrawerState(false);
     }
