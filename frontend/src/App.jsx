@@ -23,6 +23,8 @@ export default function App(){
     const meeting_url = 'http://localhost:3000/api/meetings';
 
     // get rooms data from backend
+
+    // setRooms(await axios.get(room_url).data)
     useEffect(() => {
       async function fetchRoomData() {
         const response = await axios.get(room_url);
@@ -30,6 +32,7 @@ export default function App(){
       }
       fetchRoomData();
     }, []);
+    // setRooms(fetchRoomData(room_url));
 
     // get meetings data from backend
     useEffect(() => {
@@ -39,6 +42,8 @@ export default function App(){
       }
       fetchMeetingData();
     }, []);
+
+    const temp = rooms;
 
     return(
 
@@ -50,7 +55,7 @@ export default function App(){
                 {/* <Route path="*" element={<h2>404 Page Not Found</h2>} /> */}
                 
             </Route>
-            <Route path="/meeting-rooms/seeall" element={<AllMeetingRoomsPage rooms={rooms}/>} />
+            <Route path="/meeting-rooms/seeall" element={<AllMeetingRoomsPage rooms={temp}/>} />
             <Route path="/meeting-rooms/:id" element={<MeetingRoomViewFromPathParams rooms={rooms} />} />
             <Route path="/club-meetings/:id" element={<MeetingViewFromPathParams meetings={meetings} />} />
             
@@ -87,3 +92,8 @@ function MeetingViewFromPathParams({ meetings }) {
       return <MeetingNotFound />;
     }
 }
+
+// async function fetchRoomData(room_url) {
+//   const response = await axios.get(room_url);
+//   return response.data;
+// }

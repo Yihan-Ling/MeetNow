@@ -8,8 +8,6 @@ const HTTP_NO_CONTENT = 204;
 
 const router = express.Router();
 
-
-// Create new article
 router.get('/', async(req, res) => {
     const meetingsData = await retrieveMeetingList();
     res.status(HTTP_OK)

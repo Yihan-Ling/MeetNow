@@ -11,8 +11,20 @@ import { useState } from 'react';
 export default function AllMeetingRoomsPage( {rooms} ){
 
     // Setup | seperate meeting rooms data by locations
-    const sacMeetingRooms = rooms.filter((room) => room.location === 'SAC');
+
+    // const [sacMeetingRooms, setSacMeetingRooms] = useState([]);
+    // const [lanphierMeetingRooms, setLanphierMeetingRooms] = useState([]);
+
+    // setSacMeetingRooms(rooms.filter((room) => room.location === 'SAC'));
+    // setLanphierMeetingRooms(rooms.filter((room) => room.location === 'Lanphier'))
+
+    var sacMeetingRooms = rooms.filter((room) => room.location === 'SAC');
     const lanphierMeetingRooms = rooms.filter((room) => room.location === 'Lanphier');
+
+    // const [smr,setSmr] = useState([]);
+    // setSmr([1,2,3])
+    // console.log(smr);
+
 
     // Setup | Set initial states of filters
     const [drawerState, setDrawerState] = useState(false);
@@ -114,12 +126,11 @@ export default function AllMeetingRoomsPage( {rooms} ){
                     </Box>
 
                     {/* Confirm Button */}
-                    <Button variant='contained' className={styles.confirmButton} onClick={() => setDrawerState(false)}>Confirm</Button>
+                    <Button variant='contained' className={styles.confirmButton} onClick={handleConfirmClick()}>Confirm</Button>
                 </Box>
 
             </Drawer>
             
-
 
 
             {/* SAC Rooms Display */}
@@ -149,7 +160,17 @@ export default function AllMeetingRoomsPage( {rooms} ){
 
         </div>
     );
+
+    function handleConfirmClick(){
+        sacMeetingRooms = sacMeetingRooms.filter((room) => room.capacity <= searchRoomSize)
+        // sacMeetingRooms = sacMeetingRooms.filter((room) => room.avilibility === )
+        if(searchRoomLocation != 'All'){
+            sacMeetingRooms = sacMeetingRooms.filter((room) => room.location === searchRoomLocation);
+        }
+        setDrawerState(false);
+    }
 }
+
 
 
 
