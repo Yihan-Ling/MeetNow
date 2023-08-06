@@ -10,40 +10,49 @@ import { useState } from 'react';
 
 export default function AllMeetingRoomsPage( {rooms} ){
 
-    // Setup | seperate meeting rooms data by locations
-
-    const [sacMeetingRooms, setSacMeetingRooms] = useState([]);
-    const [lanphierMeetingRooms, setLanphierMeetingRooms] = useState([]);
-
-    setSacMeetingRooms(rooms.filter((room) => room.location === 'SAC'));
-    setLanphierMeetingRooms(rooms.filter((room) => room.location === 'Lanphier'));
-
-    // var sacMeetingRooms = rooms.filter((room) => room.location === 'SAC');
-    // const lanphierMeetingRooms = rooms.filter((room) => room.location === 'Lanphier');
-
-    // const [smr,setSmr] = useState([]);
-    // setSmr([1,2,3])
-    // console.log(smr);
-
-
     // Setup | Set initial states of filters
     const [drawerState, setDrawerState] = useState(false);
-    const [searchRoomSize, setSearchRoomSize] = useState(10);
+
+    // temp_ variables are only used in filter drawer
+    // roomSize is updated once Confirm Button is pressed
+    const [tempRoomSize, setTempRoomSize] = useState(10);
+    const [roomSize, setRoomSize] = useState(10);
+
     const [searchRoomAvi, setSearchRoomAvi] = useState(false);
-    const [searchRoomLocation, setSearchRoomLocation] = useState('All');
+
+    const [tempRoomLocation, setTempRoomLocation] = useState('Any');
+    const [roomLocation, setRoomLocation] = useState('Any');
+    
+
+    // Update the filtered list of rooms
+    function filterSacRooms(room) {
+        return room.capacity<=roomSize && room.location === 'SAC' && roomLocation != 'Lanphier';
+    }
+    const sacMeetingRooms = rooms.filter(filterSacRooms);
+
+    function filterLanphierRooms(room) {
+        return room.capacity<=roomSize && room.location === 'Lanphier' && roomLocation != 'SAC';
+    }
+    const lanphierMeetingRooms = rooms.filter(filterLanphierRooms);
+
+    const [sacTitle, setSacTitle] = useState('SAC');
+    const [lanphierTitle, setLanphierTitle] = useState('Lanphier');
+     
 
     //handle state changes
     const handleRoomSizeChange = (event, newValue) => {
-        setSearchRoomSize(newValue);
+        setTempRoomSize(newValue);
     };
 
     const handleRoomAviChange = (event, checked) => {
-        setSearchRoomAvi(checked)
+        setSearchRoomAvi(checked);
     }
 
     const handleRoomLocationChange = (event) => {
-        setSearchRoomLocation(event.target.value)
+        setTempRoomLocation(event.target.value)
     }
+
+    
 
 
     return(
@@ -76,17 +85,17 @@ export default function AllMeetingRoomsPage( {rooms} ){
                             </Grid>
                             <Grid item xs>
                                 <Slider
-                                    value={searchRoomSize}
+                                    value={tempRoomSize}
                                     onChange={handleRoomSizeChange}
                                     aria-labelledby="input-slider"
-                                    min={4}
+                                    min={3}
                                     max={10}
                                     step={1}
                                     className={styles.roomSizeSlider}
                                 />
                             </Grid>
                             <Grid item>
-                                <Typography>{searchRoomSize}</Typography>
+                                <Typography>{tempRoomSize}</Typography>
                             </Grid>
                         </Grid>
                     </Box>
@@ -116,8 +125,8 @@ export default function AllMeetingRoomsPage( {rooms} ){
                                 </Typography>
                             </Grid>
                             <Grid item>
-                                <Select value={searchRoomLocation} onChange={handleRoomLocationChange}>
-                                    <MenuItem value={'All'}>Any</MenuItem>
+                                <Select value={tempRoomLocation} onChange={handleRoomLocationChange}>
+                                    <MenuItem value={'Any'}>Any</MenuItem>
                                     <MenuItem value={'SAC'}>SAC</MenuItem>
                                     <MenuItem value={'Lanphier'}>Lanphier</MenuItem>
                                 </Select>
@@ -134,7 +143,7 @@ export default function AllMeetingRoomsPage( {rooms} ){
 
 
             {/* SAC Rooms Display */}
-            <p className={styles.textTitle}>SAC</p>
+            <p className={styles.textTitle}>{sacTitle}</p>
             <Grid container spacing={2} sx={{ width: '75vw', margin: '0 auto' }}>
                 {sacMeetingRooms.map((room, index) => (
                     <Grid item key={index} xs={3} sm={6} md={4} lg={4} sx={{ display: 'flex', justifyContent: 'center' }}>
@@ -147,7 +156,7 @@ export default function AllMeetingRoomsPage( {rooms} ){
 
             
             {/* Lanphier Rooms Display */}
-            <p className={styles.textTitle}>Lanphier</p>
+            <p className={styles.textTitle}>{lanphierTitle}</p>
             <Grid container spacing={2} sx={{ width: '75vw', margin: '0 auto' }}>
                 {lanphierMeetingRooms.map((room, index) => (
                     <Grid item key={index} xs={3} sm={6} md={4} lg={4} sx={{ display: 'flex', justifyContent: 'center' }}>
@@ -162,10 +171,21 @@ export default function AllMeetingRoomsPage( {rooms} ){
     );
 
     function handleConfirmClick(){
-        setSacMeetingRooms(sacMeetingRooms.filter((room) => room.capacity <= searchRoomSize));
-        // sacMeetingRooms = sacMeetingRooms.filter((room) => room.avilibility === )
-        if(searchRoomLocation != 'All'){
-            setSacMeetingRooms(sacMeetingRooms.filter((room) => room.location === searchRoomLocation));
+        setRoomSize(tempRoomSize);
+        setRoomLocation(tempRoomLocation);
+        
+        if(tempRoomLocation === 'Any'){
+            setSacTitle('SAC');
+            setLanphierTitle('Lanphier');
+        }
+        else if(tempRoomLocation === 'SAC'){
+            setSacTitle('SAC');
+            setLanphierTitle('');
+            
+        }
+        else if(tempRoomLocation === 'Lanphier'){
+            setSacTitle('');
+            setLanphierTitle('Lanphier');
         }
         setDrawerState(false);
     }

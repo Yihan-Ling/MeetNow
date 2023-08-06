@@ -43,7 +43,7 @@ export default function App(){
       fetchMeetingData();
     }, []);
 
-    const temp = rooms;
+    
 
     return(
 
@@ -55,7 +55,7 @@ export default function App(){
                 {/* <Route path="*" element={<h2>404 Page Not Found</h2>} /> */}
                 
             </Route>
-            <Route path="/meeting-rooms/seeall" element={<AllMeetingRoomsPage rooms={temp}/>} />
+            <Route path="/meeting-rooms/seeall" element={<AllMeetingRoomsPage rooms={rooms}/>} />
             <Route path="/meeting-rooms/:id" element={<MeetingRoomViewFromPathParams rooms={rooms} />} />
             <Route path="/club-meetings/:id" element={<MeetingViewFromPathParams meetings={meetings} />} />
             
