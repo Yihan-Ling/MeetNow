@@ -20,7 +20,7 @@ export default function StudentHomePage({rooms, meetings}){
             <p className={styles.title}> Available Rooms</p>
 
             {/* See All Button */}
-            <NavLink to='/meeting-rooms/seeall'>
+            <NavLink to='/meeting-rooms/see_all'>
                 <Button variant="text" className={styles.smallButtonStyle}>
                     See All
                 </Button>
@@ -58,29 +58,39 @@ export default function StudentHomePage({rooms, meetings}){
             
             {/* Club Section Title */}
             <p className={styles.clubSectionTitle}>Clubs Today:</p>
+
+            {/* Manage All Button */}
+            <NavLink to='/club-meetings/manage_all'>
+                <Button variant="text" className={styles.smallButtonStyle}>
+                    Manage All
+                </Button>
+            </NavLink>
+
+            <div className={styles.meetingsPadding}></div>
             
             {/* Club meetings display */}
-            <Grid container spacing={4} sx={{ width: '75vw', margin: '0 auto' }}>
-                {clubMeetings.map((meeting) => (
-                    <Grid item key={meeting.name} xs={12} sm={6} md={6} lg={6} xl={6}>
-                    <Card>
-                        <CardContent>
-                        <Typography variant="h6">{meeting.club}</Typography>
-                        <Typography variant="body1">
-                            Time: {meeting.startTime} - {meeting.endTime}
-                        </Typography>
-                        <Typography variant="body1">
-                            Location: {meeting.location}
-                        </Typography>
-                        </CardContent>
-                        <CardActions>
-                            <Button size="small" component={Link} to={`/club-meetings/${meeting._id}`}>Learn More</Button>
-                        </CardActions>
-                    </Card>
-                    </Grid>
-                ))}
-            </Grid>
-            
+            <div className={styles.meetingsContainer}>
+                <Grid container spacing={4} sx={{ width: '75vw', margin: '0 auto' }}>
+                    {clubMeetings.map((meeting) => (
+                        <Grid item key={meeting.name} xs={12} sm={6} md={6} lg={6} xl={6}>
+                        <Card>
+                            <CardContent>
+                            <Typography variant="h6">{meeting.club}</Typography>
+                            <Typography variant="body1">
+                                Time: {meeting.startTime} - {meeting.endTime}
+                            </Typography>
+                            <Typography variant="body1">
+                                Location: {meeting.location}
+                            </Typography>
+                            </CardContent>
+                            <CardActions>
+                                <Button size="small" component={Link} to={`/club-meetings/${meeting._id}`}>Learn More</Button>
+                            </CardActions>
+                        </Card>
+                        </Grid>
+                    ))}
+                </Grid>
+            </div>
 
         </div>
     );

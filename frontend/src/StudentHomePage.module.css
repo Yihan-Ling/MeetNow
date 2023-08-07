@@ -62,11 +62,20 @@
     font-weight: bold;
     margin-top: 75px;
     position: relative;
-    left: 15%;
+    left: 240px;
 }
 
 .clubName {
     font-size: 12px;
     font-family: 'Inter', sans-serif;
     font-weight: bold;
+}
+
+.meetingsPadding{
+    height: 30px;
+}
+
+.meetingsContainer{
+    position: relative;
+    left: 68px;
 }

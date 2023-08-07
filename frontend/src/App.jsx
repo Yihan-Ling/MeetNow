@@ -4,6 +4,7 @@ import { Routes, Route, Navigate, useNavigate, useParams } from 'react-router-do
 import { useState, useEffect } from 'react';
 import StudentHomePage from './StudentHomePage';
 import AllMeetingRoomsPage from './AllMeetingRoomsPage';
+import AllMeetingsPage from './AllMeetingsPage';
 import MeetingRoomView from './MeetingRoomView';
 import RoomNotFound from './RoomNotFound';
 import MeetingView from './MeetingView';
@@ -55,7 +56,8 @@ export default function App(){
                 {/* <Route path="*" element={<h2>404 Page Not Found</h2>} /> */}
                 
             </Route>
-            <Route path="/meeting-rooms/seeall" element={<AllMeetingRoomsPage rooms={rooms}/>} />
+            <Route path="/meeting-rooms/see_all" element={<AllMeetingRoomsPage rooms={rooms}/>} />
+            <Route path="/club-meetings/manage_all" element={<AllMeetingsPage meetings={meetings}/>} />
             <Route path="/meeting-rooms/:id" element={<MeetingRoomViewFromPathParams rooms={rooms} />} />
             <Route path="/club-meetings/:id" element={<MeetingViewFromPathParams meetings={meetings} />} />
             
