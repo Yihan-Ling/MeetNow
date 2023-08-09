@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './AllMeetingsPage.module.css'
-import { Grid } from '@mui/material';
+import { Grid, Card, CardContent, CardActions, Typography, Button, Link } from '@mui/material';
 // import { Button, Box, Grid, Drawer, IconButton, Slider, Typography, Switch, Select, MenuItem } from '@mui/material';
 // import { Link} from 'react-router-dom';
 // import SearchIcon from '@mui/icons-material/Search';
@@ -17,9 +17,12 @@ export default function AllMeetingsPage( {meetings} ){
             <div className={styles.meetingsContainer}>
                 <Grid container spacing={8} justifyContent="center" alignItems="center">
                     {meetings.map((meeting) => (
-                        <Grid item key={meeting.name} xs={12}>
-                            {/* <Card>
+                        <Grid item key={meeting.name} xs={6.01} justifyContent="center" alignItems="center">
+                            <Card>
                                 <CardContent>
+                                <CardActions>
+                                    <Button size="small" component={Link} to={`/club-meetings/${meeting._id}`}>Edit</Button>
+                                </CardActions>
                                 <Typography variant="h6">{meeting.club}</Typography>
                                 <Typography variant="body1">
                                     Time: {meeting.startTime} - {meeting.endTime}
@@ -29,12 +32,12 @@ export default function AllMeetingsPage( {meetings} ){
                                 </Typography>
                                 </CardContent>
                                 <CardActions>
-                                    <Button size="small" component={Link} to={`/club-meetings/${meeting._id}`}>Learn More</Button>
+                                    <Button size="small" component={Link} to={`/club-meetings/${meeting._id}`}>Cancel</Button>
                                 </CardActions>
-                            </Card> */}
-                            <div className={styles.meetingCard}>
+                            </Card>
+                            {/* <div className={styles.meetingCard}> */}
 
-                            </div>
+                            {/* </div> */}
                         </Grid>
                     ))}
                 </Grid>
