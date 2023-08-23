@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './AllMeetingsPage.module.css'
-import { Grid, Card, CardContent, CardActions, Typography, Button, Link } from '@mui/material';
+import { Grid, Card, CardContent, CardActions, Typography, Button } from '@mui/material';
 import axios from 'axios';
 // import { Button, Box, Grid, Drawer, IconButton, Slider, Typography, Switch, Select, MenuItem } from '@mui/material';
-// import { Link} from 'react-router-dom';
+import { Link} from 'react-router-dom';
 // import SearchIcon from '@mui/icons-material/Search';
 // import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
@@ -42,7 +42,7 @@ export default function AllMeetingsPage( {meetings} ){
                     ))}
                 </Grid>
 
-                <Button onClick={handleOnclick}>Add a Meeting</Button>
+                <Button onClick={handleOnclick}>Add a Room</Button>
             </div>
             
         </div>
@@ -56,7 +56,7 @@ export default function AllMeetingsPage( {meetings} ){
             capacity: 100,
             location: "SAC"
         };
-        const roomsResponse = await axios.post('https://localhost:3000/api/rooms', roomToUpload);
+        const roomsResponse = await axios.post('http://localhost:3000/api/rooms', roomToUpload);
     }
 
 }
