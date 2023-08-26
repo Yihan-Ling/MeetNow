@@ -9,7 +9,7 @@ import MeetingRoomView from './MeetingRoomView';
 import RoomNotFound from './RoomNotFound';
 import MeetingView from './MeetingView';
 import MeetingNotFound from './MeetingNotFound';
-// import data from './data';
+import AddMeetingRoomPage from './AddMeetingRoomPage';
 import axios from 'axios';
 
 
@@ -58,6 +58,7 @@ export default function App(){
             </Route>
             <Route path="/meeting-rooms/see_all" element={<AllMeetingRoomsPage rooms={rooms}/>} />
             <Route path="/club-meetings/manage_all" element={<AllMeetingsPage meetings={meetings}/>} />
+            <Route path="/meeting-rooms/new-meeting-room" element={<AddMeetingRoomPage />} />
             <Route path="/meeting-rooms/:id" element={<MeetingRoomViewFromPathParams rooms={rooms} />} />
             <Route path="/club-meetings/:id" element={<MeetingViewFromPathParams meetings={meetings} />} />
             

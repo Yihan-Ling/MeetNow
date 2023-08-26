@@ -1,8 +1,9 @@
 import React from 'react';
 import styles from './AllMeetingRoomsPage.module.css'
-import { Button, Box, Grid, Drawer, IconButton, Slider, Typography, Switch, Select, MenuItem } from '@mui/material';
+import { Button, Box, Grid, Drawer, IconButton, Slider, Typography, Switch, Select, MenuItem, AppBar, Toolbar } from '@mui/material';
 import { Link} from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
+import AddIcon from '@mui/icons-material/Add'
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
 import { useState } from 'react';
@@ -166,14 +167,21 @@ export default function AllMeetingRoomsPage( {rooms} ){
                     </Grid>
                 ))}
             </Grid>
-
+            <AppBar position="fixed" sx={{ top: 'auto', bottom: 0 }}>
+                <Toolbar className={styles.appBar}>
+                    <IconButton component={Link} to={'/meeting-rooms/new-meeting-room'}>
+                        <AddIcon />
+                    </IconButton>
+                </Toolbar>
+            </AppBar>
         </div>
+        
     );
 
     function handleConfirmClick(){
         setRoomSize(tempRoomSize);
         setRoomLocation(tempRoomLocation);
-        
+
         if(tempRoomLocation === 'Any'){
             setSacTitle('SAC');
             setLanphierTitle('Lanphier');
